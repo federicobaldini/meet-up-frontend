@@ -8,7 +8,8 @@
 </script>
 
 <style>
-  input, textarea {
+  input,
+  textarea {
     display: block;
     width: 100%;
     font: inherit;
