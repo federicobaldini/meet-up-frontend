@@ -7,6 +7,15 @@
   export let value;
 </script>
 
+<div class="form-control">
+  <label for={id}>{label}</label>
+  {#if controlType === "textarea"}
+    <textarea {rows} {id} {value} on:input />
+  {:else}
+    <input {type} {id} {value} on:input />
+  {/if}
+</div>
+
 <style>
   input,
   textarea {
@@ -39,12 +48,3 @@
     margin: 0.25rem 0;
   }
 </style>
-
-<div class="form-control">
-  <label for="{id}">{label}</label>
-  {#if controlType === "textarea"}
-      <textarea rows="{rows}" id="{id}" value="{value}" on:input></textarea>
-  {:else}
-      <input type="{type}" id="{id}" value="{value}" on:input />
-  {/if}
-</div>

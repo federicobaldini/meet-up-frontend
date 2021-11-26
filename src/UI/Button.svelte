@@ -5,6 +5,12 @@
   export let mode;
 </script>
 
+{#if href}
+  <a class={mode} {href}>{caption}</a>
+{:else}
+  <button class={mode} {type}>{caption}</button>
+{/if}
+
 <style>
   button,
   a {
@@ -82,9 +88,3 @@
     background: #c2ffd1;
   }
 </style>
-
-{#if href}
-  <a class="{mode}" href="{href}">{caption}</a>
-{:else}
-  <button class="{mode}" type="{type}">{caption}</button>
-{/if}

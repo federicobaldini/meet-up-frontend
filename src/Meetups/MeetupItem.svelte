@@ -6,8 +6,27 @@
   export let imageUrl;
   export let description;
   export let address;
-  export let email; 
+  export let email;
 </script>
+
+<article>
+  <header>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <p>{address}</p>
+  </header>
+  <div class="image">
+    <img src={imageUrl} alt={title} />
+  </div>
+  <div class="content">
+    <p>{description}</p>
+  </div>
+  <footer>
+    <Button href="mailto:{email}" caption="Contact" mode="outline" />
+    <Button type="button" caption="Show Details" />
+    <Button type="button" caption="Favorite" />
+  </footer>
+</article>
 
 <style>
   article {
@@ -66,22 +85,3 @@
     height: 4rem;
   }
 </style>
-
-<article>
-  <header>
-    <h1>{title}</h1>
-    <h2>{subtitle}</h2>
-    <p>{address}</p>
-  </header>
-  <div class="image">
-    <img src="{imageUrl}" alt="{title}" />
-  </div>
-  <div class="content">
-    <p>{description}</p>
-  </div>
-  <footer>
-    <Button href="mailto:{email}" caption="Contact" mode="outline" />
-    <Button type="button" caption="Show Details" />
-    <Button type="button" caption="Favorite" />
-  </footer>
-</article>

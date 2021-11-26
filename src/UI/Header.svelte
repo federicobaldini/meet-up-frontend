@@ -1,6 +1,9 @@
 <script>
-
 </script>
+
+<header>
+  <h1>MeetUp</h1>
+</header>
 
 <style>
   header {
@@ -18,11 +21,7 @@
 
   h1 {
     color: white;
-    font-style: 'Roboto Slab', serif;
+    font-style: "Roboto Slab", serif;
     margin: 0;
   }
 </style>
-
-<header>
-  <h1>MeetUp</h1>
-</header>
