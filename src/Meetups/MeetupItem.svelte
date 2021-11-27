@@ -20,9 +20,7 @@
     <h1>
       {title}
       {#if isFavorite}
-        <Badge>
-          FAVORITE
-        </Badge>
+        <Badge>FAVORITE</Badge>
       {/if}
     </h1>
     <h2>{subtitle}</h2>
@@ -39,7 +37,7 @@
     <Button
       mode="outline"
       color={isFavorite ? null : "success"}
-      caption="{isFavorite ? 'Unfavorite' : 'Favorite'}"
+      caption={isFavorite ? "Unfavorite" : "Favorite"}
       on:click={() => dispatch("togglefavorite", id)}
     />
     <Button caption="Show Details" />
@@ -77,12 +75,14 @@
     font-family: "Roboto Slab", sans-serif;
   }
 
+  /*
   h1.is-favorite {
     background: #01a129;
     color: white;
     padding: 0 0.5rem;
     border-radius: 5px;
   }
+  */
 
   h2 {
     font-size: 1rem;
