@@ -49,7 +49,7 @@
 <Header />
 <main>
   <div class="meetup-controls">
-    <Button caption="New Meetup" on:click="{() => editMode = 'add'}" />
+    <Button on:click="{() => editMode = 'add'}">New Meetup</Button>
   </div>
   {#if editMode === "add"}
     <EditMeetup on:save="{addMeetup}" />
