@@ -12,14 +12,6 @@
   let email = "";
   let description = "";
 
-  let tilteValid = false;
-  let subtitleValid = false;
-  let addressValid = false;
-  let imageUrlValid = false;
-  let emailValid = false;
-  let descriptionValid = false;
-  let formIsValid = false;
-
   const dispatch = createEventDispatcher();
 
   $: tilteValid = !isEmpty(title);
@@ -102,8 +94,7 @@
       validityMessage="Please enter a valid description."
       controlType="textarea"
       rows="3"
-      value={description}
-      on:input={(event) => (description = event.target.value)}
+      bind:value={description}
     />
   </form>
   <div slot="footer">

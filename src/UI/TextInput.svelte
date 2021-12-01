@@ -18,11 +18,11 @@
       class:invalid={!valid && touched}
       {rows}
       {id}
-      {value}
-      on:input
+      bind:value
       on:blur={() => (touched = true)}
     />
   {:else}
+    <!-- can't use 'bind' because 'type' is a dynamic field -->
     <input
       class:invalid={!valid && touched}
       {type}
