@@ -8,38 +8,23 @@
   let editMode = null;
 
   const addMeetup = (event) => {
-    const meetupData = {
-      id: Math.random().toString(),
-      title: event.detail.title,
-      subtitle: event.detail.subtitle,
-      address: event.detail.address,
-      imageUrl: event.detail.imageUrl,
-      contactEmail: event.detail.email,
-      description: event.detail.description,
-    };
-    meetups.addMeetup(meetupData);
     editMode = null;
   };
 
   const cancelEdit = () => {
     editMode = null;
   };
-
-  const toggleFavorite = (event) => {
-    const id = event.detail;
-    meetups.toggleFavorite(id);
-  };
 </script>
 
 <Header />
 <main>
   <div class="meetup-controls">
-    <Button on:click="{() => editMode = 'add'}">New Meetup</Button>
+    <Button on:click={() => (editMode = "add")}>New Meetup</Button>
   </div>
   {#if editMode === "add"}
-    <EditMeetup on:save="{addMeetup}" on:cancel={cancelEdit} />
+    <EditMeetup on:save={addMeetup} on:cancel={cancelEdit} />
   {/if}
-  <MeetupGrid meetups={$meetups} on:togglefavorite={toggleFavorite} />
+  <MeetupGrid meetups={$meetups} />
 </main>
 
 <style>
