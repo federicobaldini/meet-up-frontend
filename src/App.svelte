@@ -7,15 +7,18 @@
   import MeetupDetail from "./Meetups/MeetupDetail.svelte";
 
   let editMode = null;
+  let editedId;
   let page = "overview";
   let pageData = { id: 0 };
 
-  const addMeetup = () => {
+  const savedMeetup = () => {
     editMode = null;
+    editedId = null;
   };
 
   const cancelEdit = () => {
     editMode = null;
+    editedId = null;
   };
 
   const showDetails = (event) => {
@@ -27,20 +30,29 @@
     page = "overview";
     pageData = {};
   };
+
+  const startEdit = (event) => {
+    editMode = "edit";
+    editedId = event.detail;
+  };
 </script>
 
 <Header />
 <main>
   {#if page === "overview"}
     <div class="meetup-controls">
-      <Button on:click={() => (editMode = "add")}>New Meetup</Button>
+      <Button on:click={() => (editMode = "edit")}>New Meetup</Button>
     </div>
-    {#if editMode === "add"}
-      <EditMeetup on:save={addMeetup} on:cancel={cancelEdit} />
+    {#if editMode === "edit"}
+      <EditMeetup id={editedId} on:save={savedMeetup} on:cancel={cancelEdit} />
     {/if}
     <!-- with this (store) bind it isn't necessary call the subscribe and unsubscribe method -->
     <!-- https://svelte.dev/tutorial/auto-subscriptions -->
-    <MeetupGrid meetups={$meetups} on:showdetails={showDetails} />
+    <MeetupGrid
+      meetups={$meetups}
+      on:showdetails={showDetails}
+      on:edit={startEdit}
+    />
   {:else}
     <MeetupDetail id={pageData.id} on:close={closeDetails} />
   {/if}

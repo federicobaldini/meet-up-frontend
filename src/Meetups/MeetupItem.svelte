@@ -10,7 +10,6 @@
   export let imageUrl;
   export let description;
   export let address;
-  export let email;
   export let isFavorite = false;
 
   const toggleFavorite = () => {
@@ -38,7 +37,7 @@
     <p>{description}</p>
   </div>
   <footer>
-    <Button href="mailto:{email}">Contact</Button>
+    <Button mode="outline" on:click={() => dispatch("edit", id)}>Edit</Button>
     <Button
       mode="outline"
       color={isFavorite ? null : "success"}
