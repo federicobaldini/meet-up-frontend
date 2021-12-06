@@ -8,7 +8,7 @@
 
   let editMode = null;
   let page = "overview";
-  let pageData = {id: 0};
+  let pageData = { id: 0 };
 
   const addMeetup = () => {
     editMode = null;
