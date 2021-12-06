@@ -64,6 +64,11 @@
     dispatch("save");
   };
 
+  const deleteMeetup = () => {
+    meetups.removeMeetup(id);
+    dispatch("save");
+  };
+
   const cancel = () => {
     dispatch("cancel");
   };
@@ -125,6 +130,9 @@
   <div slot="footer">
     <Button mode="outline" on:click={cancel}>Cancel</Button>
     <Button on:click={submitForm} disabled={!formIsValid}>Save</Button>
+    {#if id}
+      <Button on:click={deleteMeetup}>Delete</Button>
+    {/if}
   </div>
 </Modal>
 
