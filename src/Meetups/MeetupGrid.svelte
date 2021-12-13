@@ -9,7 +9,9 @@
   const dispatch = createEventDispatcher();
   let favoritesOnly = false;
 
-  $: filteredMeetups = favoritesOnly ? meetups.filter((m) => m.isFavorite) : meetups;
+  $: filteredMeetups = favoritesOnly
+    ? meetups.filter((m) => m.isFavorite)
+    : meetups;
 
   const setFilter = (event) => {
     favoritesOnly = event.detail === 1;
