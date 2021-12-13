@@ -1,5 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { scale } from "svelte/transition";
+  import { flip } from "svelte/animate";
   import MeetupItem from "./MeetupItem.svelte";
   import MeetupFilter from "./MeetupFilter.svelte";
   import Button from "../UI/Button.svelte";
@@ -23,18 +25,20 @@
   <Button on:click={() => dispatch("edit")}>New Meetup</Button>
 </section>
 <section id="meetups">
-  {#each filteredMeetups as meetup}
-    <MeetupItem
-      id={meetup.id}
-      title={meetup.title}
-      subtitle={meetup.subtitle}
-      description={meetup.description}
-      imageUrl={meetup.imageUrl}
-      address={meetup.address}
-      isFavorite={meetup.isFavorite}
-      on:showdetails
-      on:edit
-    />
+  {#each filteredMeetups as meetup (meetup.id)}
+    <div transition:scale animate:flip={{ duration: 300 }}>
+      <MeetupItem
+        id={meetup.id}
+        title={meetup.title}
+        subtitle={meetup.subtitle}
+        description={meetup.description}
+        imageUrl={meetup.imageUrl}
+        address={meetup.address}
+        isFavorite={meetup.isFavorite}
+        on:showdetails
+        on:edit
+      />
+    </div>
   {/each}
 </section>
 
