@@ -11,6 +11,27 @@
   let page = "overview";
   let pageData = { id: 0 };
 
+  fetch(
+    "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups.json"
+  )
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Fetching meetups failed, please try again later!");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      const loadedMeetups = [];
+      for (const key in data) {
+        loadedMeetups.push({
+          ...data[key],
+          id: key,
+        });
+      }
+      meetups.setMeetup(loadedMeetups);
+    })
+    .catch((err) => console.log(err));
+
   const savedMeetup = () => {
     editMode = null;
     editedId = null;
