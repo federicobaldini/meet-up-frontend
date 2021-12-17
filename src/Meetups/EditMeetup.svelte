@@ -47,7 +47,6 @@
 
   const submitForm = () => {
     const meetupData = {
-      id: Math.random().toString(),
       title: title,
       subtitle: subtitle,
       address: address,
@@ -57,14 +56,28 @@
     };
 
     if (id) {
-      meetups.updateMeetup(id, meetupData);
+      fetch(
+        "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" + id + ".json",
+        {
+          method: "PATCH",
+          body: JSON.stringify(meetupData),
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("An error occurred, please try again!");
+          }
+          meetups.updateMeetup(id, meetupData);
+        })
+        .catch((err) => console.log(err));
     } else {
       fetch(
         "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups.json",
         {
           method: "POST",
           body: JSON.stringify({ ...meetupData, isFavorite: false }),
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
         }
       )
         .then((res) => {
