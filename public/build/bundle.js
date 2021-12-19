@@ -1891,27 +1891,27 @@ var app = (function () {
     			t11 = space();
     			create_component(button2.$$.fragment);
     			attr_dev(h1, "class", "svelte-oaexq5");
-    			add_location(h1, file$8, 39, 4, 960);
+    			add_location(h1, file$8, 39, 4, 962);
     			attr_dev(h2, "class", "svelte-oaexq5");
-    			add_location(h2, file$8, 45, 4, 1060);
+    			add_location(h2, file$8, 45, 4, 1062);
     			attr_dev(p0, "class", "svelte-oaexq5");
-    			add_location(p0, file$8, 46, 4, 1084);
+    			add_location(p0, file$8, 46, 4, 1086);
     			attr_dev(header, "class", "svelte-oaexq5");
-    			add_location(header, file$8, 38, 2, 947);
+    			add_location(header, file$8, 38, 2, 949);
     			if (!src_url_equal(img.src, img_src_value = /*imageUrl*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", /*title*/ ctx[1]);
     			attr_dev(img, "class", "svelte-oaexq5");
-    			add_location(img, file$8, 49, 4, 1139);
+    			add_location(img, file$8, 49, 4, 1141);
     			attr_dev(div0, "class", "image svelte-oaexq5");
-    			add_location(div0, file$8, 48, 2, 1115);
+    			add_location(div0, file$8, 48, 2, 1117);
     			attr_dev(p1, "class", "svelte-oaexq5");
-    			add_location(p1, file$8, 52, 4, 1211);
+    			add_location(p1, file$8, 52, 4, 1213);
     			attr_dev(div1, "class", "content svelte-oaexq5");
-    			add_location(div1, file$8, 51, 2, 1185);
+    			add_location(div1, file$8, 51, 2, 1187);
     			attr_dev(footer, "class", "svelte-oaexq5");
-    			add_location(footer, file$8, 54, 2, 1243);
+    			add_location(footer, file$8, 54, 2, 1245);
     			attr_dev(article, "class", "svelte-oaexq5");
-    			add_location(article, file$8, 37, 0, 935);
+    			add_location(article, file$8, 37, 0, 937);
     		},
     		l: function claim(nodes) {
     			throw new Error_1$2("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3584,7 +3584,7 @@ var app = (function () {
     const { Error: Error_1$1, console: console_1$1 } = globals;
     const file$3 = "src/Meetups/EditMeetup.svelte";
 
-    // (113:0) <Modal title="Edit Meetup Data" on:cancel>
+    // (127:0) <Modal title="Edit Meetup Data" on:cancel>
     function create_default_slot_3(ctx) {
     	let form;
     	let textinput0;
@@ -3704,7 +3704,7 @@ var app = (function () {
     			t4 = space();
     			create_component(textinput5.$$.fragment);
     			attr_dev(form, "class", "svelte-1h1dh1p");
-    			add_location(form, file$3, 113, 2, 2943);
+    			add_location(form, file$3, 127, 2, 3289);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, form, anchor);
@@ -3794,14 +3794,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(113:0) <Modal title=\\\"Edit Meetup Data\\\" on:cancel>",
+    		source: "(127:0) <Modal title=\\\"Edit Meetup Data\\\" on:cancel>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (167:4) <Button mode="outline" on:click={cancel}>
+    // (181:4) <Button mode="outline" on:click={cancel}>
     function create_default_slot_2(ctx) {
     	let t;
 
@@ -3821,14 +3821,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(167:4) <Button mode=\\\"outline\\\" on:click={cancel}>",
+    		source: "(181:4) <Button mode=\\\"outline\\\" on:click={cancel}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (168:4) <Button on:click={submitForm} disabled={!formIsValid}>
+    // (182:4) <Button on:click={submitForm} disabled={!formIsValid}>
     function create_default_slot_1$1(ctx) {
     	let t;
 
@@ -3848,14 +3848,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(168:4) <Button on:click={submitForm} disabled={!formIsValid}>",
+    		source: "(182:4) <Button on:click={submitForm} disabled={!formIsValid}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (169:4) {#if id}
+    // (183:4) {#if id}
     function create_if_block$1(ctx) {
     	let button;
     	let current;
@@ -3905,14 +3905,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(169:4) {#if id}",
+    		source: "(183:4) {#if id}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (170:6) <Button on:click={deleteMeetup}>
+    // (184:6) <Button on:click={deleteMeetup}>
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -3932,14 +3932,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(170:6) <Button on:click={deleteMeetup}>",
+    		source: "(184:6) <Button on:click={deleteMeetup}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (166:2) 
+    // (180:2) 
     function create_footer_slot(ctx) {
     	let div;
     	let button0;
@@ -3980,7 +3980,7 @@ var app = (function () {
     			t1 = space();
     			if (if_block) if_block.c();
     			attr_dev(div, "slot", "footer");
-    			add_location(div, file$3, 165, 2, 4378);
+    			add_location(div, file$3, 179, 2, 4724);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4056,7 +4056,7 @@ var app = (function () {
     		block,
     		id: create_footer_slot.name,
     		type: "slot",
-    		source: "(166:2) ",
+    		source: "(180:2) ",
     		ctx
     	});
 
@@ -4206,7 +4206,14 @@ var app = (function () {
     	};
 
     	const deleteMeetup = () => {
-    		customMeetupsStore.removeMeetup(id);
+    		fetch("https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" + id + ".json", { method: "DELETE" }).then(res => {
+    			if (!res.ok) {
+    				throw new Error("An error occurred, please try again!");
+    			}
+
+    			customMeetupsStore.removeMeetup(id);
+    		}).catch(err => console.log(err));
+
     		dispatch("save");
     	};
 

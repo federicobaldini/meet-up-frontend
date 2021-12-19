@@ -19,7 +19,7 @@
         ".json",
       {
         method: "PATCH",
-        body: JSON.stringify({isFavorite: !isFavorite}),
+        body: JSON.stringify({ isFavorite: !isFavorite }),
         headers: { "Content-Type": "application/json" },
       }
     )
