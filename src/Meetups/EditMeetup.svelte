@@ -68,11 +68,16 @@
       )
         .then((res) => {
           if (!res.ok) {
-            throw new Error("An error occurred, please try again!");
+            throwError({
+              message: "Updating meetup failed, please try again later!",
+            });
           }
           meetups.updateMeetup(id, meetupData);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          throwError(err);
+          console.log(err);
+        });
     } else {
       fetch(
         "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups.json",
@@ -84,7 +89,9 @@
       )
         .then((res) => {
           if (!res.ok) {
-            throw new Error("An error occurred, please try again!");
+            throwError({
+              message: "Adding meetup failed, please try again later!",
+            });
           }
           return res.json();
         })
@@ -95,7 +102,10 @@
             id: data.name,
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          throwError(err);
+          console.log(err);
+        });
     }
     dispatch("save");
   };
@@ -111,16 +121,25 @@
     )
       .then((res) => {
         if (!res.ok) {
-          throw new Error("An error occurred, please try again!");
+          throwError({
+            message: "Deleting meetup failed, please try again later!",
+          });
         }
-          meetups.removeMeetup(id);
+        meetups.removeMeetup(id);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throwError(err);
+        console.log(err);
+      });
     dispatch("save");
   };
 
   const cancel = () => {
     dispatch("cancel");
+  };
+
+  const throwError = (error) => {
+    dispatch("error", error);
   };
 </script>
 

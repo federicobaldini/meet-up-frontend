@@ -14,6 +14,8 @@
 
   let isLoading = false;
 
+  const dispatch = createEventDispatcher();
+
   const toggleFavorite = () => {
     isLoading = true;
     fetch(
@@ -28,18 +30,21 @@
     )
       .then((res) => {
         if (!res.ok) {
-          throw new Error("An error occurred, please try again!");
+          throwError({ message: "An error occurred, please try again!" });
         }
         isLoading = false;
         meetups.toggleFavorite(id);
       })
       .catch((err) => {
         isLoading = false;
+        throwError(err);
         console.log(err);
       });
   };
 
-  const dispatch = createEventDispatcher();
+  const throwError = (error) => {
+    dispatch("error", error);
+  };
 </script>
 
 <article>

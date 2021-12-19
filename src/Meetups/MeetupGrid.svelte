@@ -40,6 +40,7 @@
         isFavorite={meetup.isFavorite}
         on:showdetails
         on:edit
+        on:error
       />
     </div>
   {/each}

@@ -4,20 +4,22 @@
   import MeetupGrid from "./Meetups/MeetupGrid.svelte";
   import EditMeetup from "./Meetups/EditMeetup.svelte";
   import MeetupDetail from "./Meetups/MeetupDetail.svelte";
-  import LoadingSpinner from "./UI/LoadingSpinner.svelte"
+  import LoadingSpinner from "./UI/LoadingSpinner.svelte";
+  import Error from "./UI/Error.svelte";
 
   let editMode = null;
   let editedId;
   let page = "overview";
   let pageData = { id: 0 };
   let isLoading = true;
+  let error;
 
   fetch(
     "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups.json"
   )
     .then((res) => {
       if (!res.ok) {
-        throw new Error("Fetching meetups failed, please try again later!");
+        error = {message: "Fetching meetups failed, please try again later!"};
       }
       return res.json();
     })
@@ -35,6 +37,7 @@
       }, 1000);
     })
     .catch((err) => {
+      error = err;
       isLoading = false;
       console.log(err);
     });
@@ -63,13 +66,24 @@
     editMode = "edit";
     editedId = event.detail;
   };
+
+  const throwError = (event) => {
+    error = event.detail;
+  };
+
+  const clearError = () => {
+    error = null;
+  };
 </script>
 
+{#if error}
+  <Error message={error.message} on:cancel={clearError} />
+{/if}
 <Header />
 <main>
   {#if page === "overview"}
     {#if editMode === "edit"}
-      <EditMeetup id={editedId} on:save={savedMeetup} on:cancel={cancelEdit} />
+      <EditMeetup id={editedId} on:save={savedMeetup} on:cancel={cancelEdit} on:error={throwError} />
     {/if}
     {#if isLoading}
       <LoadingSpinner />
@@ -80,6 +94,7 @@
         meetups={$meetups}
         on:showdetails={showDetails}
         on:edit={startEdit}
+        on:error={throwError}
       />
     {/if}
   {:else}
