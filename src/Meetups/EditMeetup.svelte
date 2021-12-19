@@ -57,7 +57,9 @@
 
     if (id) {
       fetch(
-        "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" + id + ".json",
+        "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" +
+          id +
+          ".json",
         {
           method: "PATCH",
           body: JSON.stringify(meetupData),

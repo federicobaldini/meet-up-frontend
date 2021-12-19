@@ -13,7 +13,23 @@
   export let isFavorite = false;
 
   const toggleFavorite = () => {
-    meetups.toggleFavorite(id);
+    fetch(
+      "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" +
+        id +
+        ".json",
+      {
+        method: "PATCH",
+        body: JSON.stringify({isFavorite: !isFavorite}),
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("An error occurred, please try again!");
+        }
+        meetups.toggleFavorite(id);
+      })
+      .catch((err) => console.log(err));
   };
 
   const dispatch = createEventDispatcher();
