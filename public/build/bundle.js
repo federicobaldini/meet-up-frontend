@@ -5115,7 +5115,7 @@ var app = (function () {
     			main = element("main");
     			if_block.c();
     			attr_dev(main, "class", "svelte-1r5xu04");
-    			add_location(main, file, 68, 0, 1515);
+    			add_location(main, file, 68, 0, 1525);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5212,7 +5212,7 @@ var app = (function () {
     		setTimeout(
     			() => {
     				$$invalidate(4, isLoading = false);
-    				customMeetupsStore.setMeetup(loadedMeetups);
+    				customMeetupsStore.setMeetup(loadedMeetups.reverse());
     			},
     			1000
     		);
