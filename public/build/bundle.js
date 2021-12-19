@@ -1175,7 +1175,7 @@ var app = (function () {
     const file$a = "src/UI/Button.svelte";
 
     // (13:0) {:else}
-    function create_else_block$2(ctx) {
+    function create_else_block$3(ctx) {
     	let button;
     	let button_class_value;
     	let current;
@@ -1254,7 +1254,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$2.name,
+    		id: create_else_block$3.name,
     		type: "else",
     		source: "(13:0) {:else}",
     		ctx
@@ -1343,7 +1343,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$5, create_else_block$2];
+    	const if_block_creators = [create_if_block$5, create_else_block$3];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -1641,8 +1641,8 @@ var app = (function () {
     const { Error: Error_1$2, console: console_1$2 } = globals;
     const file$8 = "src/Meetups/MeetupItem.svelte";
 
-    // (42:6) {#if isFavorite}
-    function create_if_block$4(ctx) {
+    // (49:6) {#if isFavorite}
+    function create_if_block_1$2(ctx) {
     	let badge;
     	let current;
 
@@ -1678,16 +1678,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$4.name,
+    		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(42:6) {#if isFavorite}",
+    		source: "(49:6) {#if isFavorite}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (43:8) <Badge>
+    // (50:8) <Badge>
     function create_default_slot_3$1(ctx) {
     	let t;
 
@@ -1707,14 +1707,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$1.name,
     		type: "slot",
-    		source: "(43:8) <Badge>",
+    		source: "(50:8) <Badge>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:4) <Button mode="outline" on:click={() => dispatch("edit", id)}>
+    // (63:4) <Button mode="outline" on:click={() => dispatch("edit", id)}>
     function create_default_slot_2$1(ctx) {
     	let t;
 
@@ -1734,14 +1734,106 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(56:4) <Button mode=\\\"outline\\\" on:click={() => dispatch(\\\"edit\\\", id)}>",
+    		source: "(63:4) <Button mode=\\\"outline\\\" on:click={() => dispatch(\\\"edit\\\", id)}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (57:4) <Button       mode="outline"       color={isFavorite ? null : "success"}       on:click={toggleFavorite}     >
+    // (66:4) {:else}
+    function create_else_block$2(ctx) {
+    	let button;
+    	let current;
+
+    	button = new Button({
+    			props: {
+    				mode: "outline",
+    				color: /*isFavorite*/ ctx[6] ? null : "success",
+    				$$slots: { default: [create_default_slot_1$2] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	button.$on("click", /*toggleFavorite*/ ctx[8]);
+
+    	const block = {
+    		c: function create() {
+    			create_component(button.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(button, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const button_changes = {};
+    			if (dirty & /*isFavorite*/ 64) button_changes.color = /*isFavorite*/ ctx[6] ? null : "success";
+
+    			if (dirty & /*$$scope, isFavorite*/ 4160) {
+    				button_changes.$$scope = { dirty, ctx };
+    			}
+
+    			button.$set(button_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(button.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(button.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(button, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$2.name,
+    		type: "else",
+    		source: "(66:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (64:4) {#if isLoading}
+    function create_if_block$4(ctx) {
+    	let span;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			span.textContent = "Changing...";
+    			add_location(span, file$8, 64, 6, 1480);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(span);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$4.name,
+    		type: "if",
+    		source: "(64:4) {#if isLoading}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (67:6) <Button         mode="outline"         color={isFavorite ? null : "success"}         on:click={toggleFavorite}       >
     function create_default_slot_1$2(ctx) {
     	let t_value = (/*isFavorite*/ ctx[6] ? "Unfavorite" : "Favorite") + "";
     	let t;
@@ -1765,14 +1857,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$2.name,
     		type: "slot",
-    		source: "(57:4) <Button       mode=\\\"outline\\\"       color={isFavorite ? null : \\\"success\\\"}       on:click={toggleFavorite}     >",
+    		source: "(67:6) <Button         mode=\\\"outline\\\"         color={isFavorite ? null : \\\"success\\\"}         on:click={toggleFavorite}       >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (64:4) <Button on:click={() => dispatch("showdetails", id)}>
+    // (75:4) <Button on:click={() => dispatch("showdetails", id)}>
     function create_default_slot$4(ctx) {
     	let t;
 
@@ -1792,7 +1884,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$4.name,
     		type: "slot",
-    		source: "(64:4) <Button on:click={() => dispatch(\\\"showdetails\\\", id)}>",
+    		source: "(75:4) <Button on:click={() => dispatch(\\\"showdetails\\\", id)}>",
     		ctx
     	});
 
@@ -1823,11 +1915,12 @@ var app = (function () {
     	let footer;
     	let button0;
     	let t10;
-    	let button1;
+    	let current_block_type_index;
+    	let if_block1;
     	let t11;
-    	let button2;
+    	let button1;
     	let current;
-    	let if_block = /*isFavorite*/ ctx[6] && create_if_block$4(ctx);
+    	let if_block0 = /*isFavorite*/ ctx[6] && create_if_block_1$2(ctx);
 
     	button0 = new Button({
     			props: {
@@ -1838,21 +1931,19 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button0.$on("click", /*click_handler*/ ctx[9]);
+    	button0.$on("click", /*click_handler*/ ctx[10]);
+    	const if_block_creators = [create_if_block$4, create_else_block$2];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*isLoading*/ ctx[7]) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
     	button1 = new Button({
-    			props: {
-    				mode: "outline",
-    				color: /*isFavorite*/ ctx[6] ? null : "success",
-    				$$slots: { default: [create_default_slot_1$2] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	button1.$on("click", /*toggleFavorite*/ ctx[7]);
-
-    	button2 = new Button({
     			props: {
     				$$slots: { default: [create_default_slot$4] },
     				$$scope: { ctx }
@@ -1860,7 +1951,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button2.$on("click", /*click_handler_1*/ ctx[10]);
+    	button1.$on("click", /*click_handler_1*/ ctx[11]);
 
     	const block = {
     		c: function create() {
@@ -1869,7 +1960,7 @@ var app = (function () {
     			h1 = element("h1");
     			t0 = text(/*title*/ ctx[1]);
     			t1 = space();
-    			if (if_block) if_block.c();
+    			if (if_block0) if_block0.c();
     			t2 = space();
     			h2 = element("h2");
     			t3 = text(/*subtitle*/ ctx[2]);
@@ -1887,31 +1978,31 @@ var app = (function () {
     			footer = element("footer");
     			create_component(button0.$$.fragment);
     			t10 = space();
-    			create_component(button1.$$.fragment);
+    			if_block1.c();
     			t11 = space();
-    			create_component(button2.$$.fragment);
+    			create_component(button1.$$.fragment);
     			attr_dev(h1, "class", "svelte-oaexq5");
-    			add_location(h1, file$8, 39, 4, 962);
+    			add_location(h1, file$8, 46, 4, 1083);
     			attr_dev(h2, "class", "svelte-oaexq5");
-    			add_location(h2, file$8, 45, 4, 1062);
+    			add_location(h2, file$8, 52, 4, 1183);
     			attr_dev(p0, "class", "svelte-oaexq5");
-    			add_location(p0, file$8, 46, 4, 1086);
+    			add_location(p0, file$8, 53, 4, 1207);
     			attr_dev(header, "class", "svelte-oaexq5");
-    			add_location(header, file$8, 38, 2, 949);
+    			add_location(header, file$8, 45, 2, 1070);
     			if (!src_url_equal(img.src, img_src_value = /*imageUrl*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", /*title*/ ctx[1]);
     			attr_dev(img, "class", "svelte-oaexq5");
-    			add_location(img, file$8, 49, 4, 1141);
+    			add_location(img, file$8, 56, 4, 1262);
     			attr_dev(div0, "class", "image svelte-oaexq5");
-    			add_location(div0, file$8, 48, 2, 1117);
+    			add_location(div0, file$8, 55, 2, 1238);
     			attr_dev(p1, "class", "svelte-oaexq5");
-    			add_location(p1, file$8, 52, 4, 1213);
+    			add_location(p1, file$8, 59, 4, 1334);
     			attr_dev(div1, "class", "content svelte-oaexq5");
-    			add_location(div1, file$8, 51, 2, 1187);
+    			add_location(div1, file$8, 58, 2, 1308);
     			attr_dev(footer, "class", "svelte-oaexq5");
-    			add_location(footer, file$8, 54, 2, 1245);
+    			add_location(footer, file$8, 61, 2, 1366);
     			attr_dev(article, "class", "svelte-oaexq5");
-    			add_location(article, file$8, 37, 0, 937);
+    			add_location(article, file$8, 44, 0, 1058);
     		},
     		l: function claim(nodes) {
     			throw new Error_1$2("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1922,7 +2013,7 @@ var app = (function () {
     			append_dev(header, h1);
     			append_dev(h1, t0);
     			append_dev(h1, t1);
-    			if (if_block) if_block.m(h1, null);
+    			if (if_block0) if_block0.m(h1, null);
     			append_dev(header, t2);
     			append_dev(header, h2);
     			append_dev(h2, t3);
@@ -1940,30 +2031,30 @@ var app = (function () {
     			append_dev(article, footer);
     			mount_component(button0, footer, null);
     			append_dev(footer, t10);
-    			mount_component(button1, footer, null);
+    			if_blocks[current_block_type_index].m(footer, null);
     			append_dev(footer, t11);
-    			mount_component(button2, footer, null);
+    			mount_component(button1, footer, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
     			if (!current || dirty & /*title*/ 2) set_data_dev(t0, /*title*/ ctx[1]);
 
     			if (/*isFavorite*/ ctx[6]) {
-    				if (if_block) {
+    				if (if_block0) {
     					if (dirty & /*isFavorite*/ 64) {
-    						transition_in(if_block, 1);
+    						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block = create_if_block$4(ctx);
-    					if_block.c();
-    					transition_in(if_block, 1);
-    					if_block.m(h1, null);
+    					if_block0 = create_if_block_1$2(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(h1, null);
     				}
-    			} else if (if_block) {
+    			} else if (if_block0) {
     				group_outros();
 
-    				transition_out(if_block, 1, 1, () => {
-    					if_block = null;
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
     				});
 
     				check_outros();
@@ -1983,48 +2074,66 @@ var app = (function () {
     			if (!current || dirty & /*description*/ 16) set_data_dev(t8, /*description*/ ctx[4]);
     			const button0_changes = {};
 
-    			if (dirty & /*$$scope*/ 2048) {
+    			if (dirty & /*$$scope*/ 4096) {
     				button0_changes.$$scope = { dirty, ctx };
     			}
 
     			button0.$set(button0_changes);
-    			const button1_changes = {};
-    			if (dirty & /*isFavorite*/ 64) button1_changes.color = /*isFavorite*/ ctx[6] ? null : "success";
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
 
-    			if (dirty & /*$$scope, isFavorite*/ 2112) {
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block1 = if_blocks[current_block_type_index];
+
+    				if (!if_block1) {
+    					if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block1.c();
+    				} else {
+    					if_block1.p(ctx, dirty);
+    				}
+
+    				transition_in(if_block1, 1);
+    				if_block1.m(footer, t11);
+    			}
+
+    			const button1_changes = {};
+
+    			if (dirty & /*$$scope*/ 4096) {
     				button1_changes.$$scope = { dirty, ctx };
     			}
 
     			button1.$set(button1_changes);
-    			const button2_changes = {};
-
-    			if (dirty & /*$$scope*/ 2048) {
-    				button2_changes.$$scope = { dirty, ctx };
-    			}
-
-    			button2.$set(button2_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(if_block);
+    			transition_in(if_block0);
     			transition_in(button0.$$.fragment, local);
+    			transition_in(if_block1);
     			transition_in(button1.$$.fragment, local);
-    			transition_in(button2.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(if_block);
+    			transition_out(if_block0);
     			transition_out(button0.$$.fragment, local);
+    			transition_out(if_block1);
     			transition_out(button1.$$.fragment, local);
-    			transition_out(button2.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(article);
-    			if (if_block) if_block.d();
+    			if (if_block0) if_block0.d();
     			destroy_component(button0);
+    			if_blocks[current_block_type_index].d();
     			destroy_component(button1);
-    			destroy_component(button2);
     		}
     	};
 
@@ -2049,8 +2158,11 @@ var app = (function () {
     	let { description } = $$props;
     	let { address } = $$props;
     	let { isFavorite = false } = $$props;
+    	let isLoading = false;
 
     	const toggleFavorite = () => {
+    		$$invalidate(7, isLoading = true);
+
     		fetch("https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" + id + ".json", {
     			method: "PATCH",
     			body: JSON.stringify({ isFavorite: !isFavorite }),
@@ -2060,8 +2172,12 @@ var app = (function () {
     				throw new Error("An error occurred, please try again!");
     			}
 
+    			$$invalidate(7, isLoading = false);
     			customMeetupsStore.toggleFavorite(id);
-    		}).catch(err => console.log(err));
+    		}).catch(err => {
+    			$$invalidate(7, isLoading = false);
+    			console.log(err);
+    		});
     	};
 
     	const dispatch = createEventDispatcher();
@@ -2096,6 +2212,7 @@ var app = (function () {
     		description,
     		address,
     		isFavorite,
+    		isLoading,
     		toggleFavorite,
     		dispatch
     	});
@@ -2108,6 +2225,7 @@ var app = (function () {
     		if ('description' in $$props) $$invalidate(4, description = $$props.description);
     		if ('address' in $$props) $$invalidate(5, address = $$props.address);
     		if ('isFavorite' in $$props) $$invalidate(6, isFavorite = $$props.isFavorite);
+    		if ('isLoading' in $$props) $$invalidate(7, isLoading = $$props.isLoading);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -2122,6 +2240,7 @@ var app = (function () {
     		description,
     		address,
     		isFavorite,
+    		isLoading,
     		toggleFavorite,
     		dispatch,
     		click_handler,

@@ -12,7 +12,10 @@
   export let address;
   export let isFavorite = false;
 
+  let isLoading = false;
+
   const toggleFavorite = () => {
+    isLoading = true;
     fetch(
       "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" +
         id +
@@ -27,9 +30,13 @@
         if (!res.ok) {
           throw new Error("An error occurred, please try again!");
         }
+        isLoading = false;
         meetups.toggleFavorite(id);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        isLoading = false;
+        console.log(err);
+      });
   };
 
   const dispatch = createEventDispatcher();
@@ -54,13 +61,17 @@
   </div>
   <footer>
     <Button mode="outline" on:click={() => dispatch("edit", id)}>Edit</Button>
-    <Button
-      mode="outline"
-      color={isFavorite ? null : "success"}
-      on:click={toggleFavorite}
-    >
-      {isFavorite ? "Unfavorite" : "Favorite"}
-    </Button>
+    {#if isLoading}
+      <span>Changing...</span>
+    {:else}
+      <Button
+        mode="outline"
+        color={isFavorite ? null : "success"}
+        on:click={toggleFavorite}
+      >
+        {isFavorite ? "Unfavorite" : "Favorite"}
+      </Button>
+    {/if}
     <Button on:click={() => dispatch("showdetails", id)}>Show Details</Button>
   </footer>
 </article>
