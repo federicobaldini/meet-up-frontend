@@ -38,10 +38,10 @@
 
   .modal {
     position: fixed;
-    top: 6vh;
+    top: 4vh;
     left: 10%;
     width: 80%;
-    max-height: 90vh;
+    max-height: 92vh;
     background: white;
     border-radius: 5px;
     z-index: 100;

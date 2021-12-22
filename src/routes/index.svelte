@@ -45,24 +45,33 @@
   import Button from "../components/UI/Button.svelte";
   import EditMeetup from "../components/Meetup/EditMeetup.svelte";
   import LoadingSpinner from "../components/UI/LoadingSpinner.svelte";
+import { subscribe } from "svelte/internal";
 
   export let fetchedMeetups;
 
+  let loadedMeetups = [];
   let editMode;
   let editedId;
   let isLoading;
   let unsubscribe;
 
-  const dispatch = createEventDispatcher();
-
   let favoritesOnly = false;
 
   $: filteredMeetups = favoritesOnly
-    ? fetchedMeetups.filter((m) => m.isFavorite)
-    : fetchedMeetups;
+    ? loadedMeetups.filter((m) => m.isFavorite)
+    : loadedMeetups;
 
   onMount(() => {
+    unsubscribe = meetups.subscribe(items => {
+      loadedMeetups = items;
+    });
     meetups.setMeetups(fetchedMeetups);
+  });
+
+  onDestroy(() => {
+    if (unsubscribe) {
+      unsubscribe();
+    }
   });
 
   const setFilter = (event) => {
@@ -101,6 +110,10 @@
   const clearError = () => {
     error = null;
   };
+
+  const startAdd = () => {
+    editMode = "edit";
+  };
 </script>
 
 <svelte:head>
@@ -120,7 +133,7 @@
 {:else}
   <section id="meetup-controls">
     <MeetupFilter on:select={setFilter} />
-    <Button on:click={() => dispatch("edit")}>New Meetup</Button>
+    <Button on:click={startAdd}>New Meetup</Button>
   </section>
   {#if filteredMeetups.length === 0}
     <p id="no-meetups">No meetups found, you can start adding some.</p>
