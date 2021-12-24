@@ -19,7 +19,7 @@
   const toggleFavorite = () => {
     isLoading = true;
     fetch(
-      "https://svelte-meet-up-project-default-rtdb.firebaseiocom/meetups/" +
+      "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" +
         id +
         ".json",
       {
