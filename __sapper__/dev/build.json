@@ -2,20 +2,20 @@
   "bundler": "rollup",
   "shimport": "1.0.1",
   "assets": {
-    "main": "client.f352de8c.js"
+    "main": "client.675acd44.js"
   },
   "css": {
     "main": "main.3994171876.css",
     "chunks": {
       "index.svelte": [
-        "index.21323f33.css",
-        "client.f352de8c.css",
-        "Button.77bc13b0.css"
+        "index.e108c545.css",
+        "client.675acd44.css",
+        "Button.9ebc7843.css"
       ],
       "MeetupDetail.svelte": [
-        "MeetupDetail.7e0bafa3.css",
-        "client.f352de8c.css",
-        "Button.77bc13b0.css"
+        "MeetupDetail.65c0f9a7.css",
+        "client.675acd44.css",
+        "Button.9ebc7843.css"
       ]
     }
   }
