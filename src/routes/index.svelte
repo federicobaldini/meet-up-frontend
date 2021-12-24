@@ -20,23 +20,17 @@
           });
         }
         return { fetchedMeetups: loadedMeetups.reverse() };
-        /*
-        setTimeout(() => {
-          isLoading = false;
-          meetups.setMeetup(loadedMeetups.reverse());
-        }, 1000);
-        */
       })
       .catch((err) => {
         error = err;
         isLoading = false;
         this.error(500, "Could not fetch meetups!");
       });
-  };
+  }
 </script>
 
 <script>
-  import { createEventDispatcher, onMount, onDestroy } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import { scale } from "svelte/transition";
   import { flip } from "svelte/animate";
   import meetups from "../Store/meetups-store";
@@ -45,7 +39,7 @@
   import Button from "../components/UI/Button.svelte";
   import EditMeetup from "../components/Meetup/EditMeetup.svelte";
   import LoadingSpinner from "../components/UI/LoadingSpinner.svelte";
-import { subscribe } from "svelte/internal";
+  import Error from "../components/UI/Error.svelte";
 
   export let fetchedMeetups;
 
@@ -54,6 +48,7 @@ import { subscribe } from "svelte/internal";
   let editedId;
   let isLoading;
   let unsubscribe;
+  let error;
 
   let favoritesOnly = false;
 
@@ -62,7 +57,7 @@ import { subscribe } from "svelte/internal";
     : loadedMeetups;
 
   onMount(() => {
-    unsubscribe = meetups.subscribe(items => {
+    unsubscribe = meetups.subscribe((items) => {
       loadedMeetups = items;
     });
     meetups.setMeetups(fetchedMeetups);
@@ -93,16 +88,6 @@ import { subscribe } from "svelte/internal";
     editedId = event.detail;
   };
 
-  const showDetails = (event) => {
-    page = "details";
-    pageData.id = event.detail;
-  };
-
-  const closeDetails = () => {
-    page = "overview";
-    pageData = {};
-  };
-
   const throwError = (event) => {
     error = event.detail;
   };
@@ -117,9 +102,12 @@ import { subscribe } from "svelte/internal";
 </script>
 
 <svelte:head>
-  <title>All Meetups</title>
+  <title>Meetups Home</title>
 </svelte:head>
 
+{#if error}
+  <Error message={error.message} on:cancel={clearError} />
+{/if}
 {#if editMode === "edit"}
   <EditMeetup
     id={editedId}

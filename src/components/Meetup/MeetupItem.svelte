@@ -19,7 +19,7 @@
   const toggleFavorite = () => {
     isLoading = true;
     fetch(
-      "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" +
+      "https://svelte-meet-up-project-default-rtdb.firebaseiocom/meetups/" +
         id +
         ".json",
       {
@@ -38,7 +38,6 @@
       .catch((err) => {
         isLoading = false;
         throwError(err);
-        console.log(err);
       });
   };
 
@@ -77,7 +76,7 @@
         {isFavorite ? "Unfavorite" : "Favorite"}
       </Button>
     {/if}
-    <Button on:click={() => dispatch("showdetails", id)}>Show Details</Button>
+    <Button href={"/" + id}>Show Details</Button>
   </footer>
 </article>
 
@@ -111,15 +110,6 @@
     margin: 0.5rem 0;
     font-family: "Roboto Slab", sans-serif;
   }
-
-  /*
-  h1.is-favorite {
-    background: #01a129;
-    color: white;
-    padding: 0 0.5rem;
-    border-radius: 5px;
-  }
-  */
 
   h2 {
     font-size: 1rem;
