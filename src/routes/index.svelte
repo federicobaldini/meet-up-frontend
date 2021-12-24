@@ -19,7 +19,7 @@
             id: key,
           });
         }
-        return { fetchedMeetups: loadedMeetups };
+        return { fetchedMeetups: loadedMeetups.reverse() };
         /*
         setTimeout(() => {
           isLoading = false;
@@ -149,7 +149,6 @@ import { subscribe } from "svelte/internal";
           imageUrl={meetup.imageUrl}
           address={meetup.address}
           isFavorite={meetup.isFavorite}
-          on:showdetails={showDetails}
           on:edit={startEdit}
           on:error={throwError}
         />
