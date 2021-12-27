@@ -1,32 +1,30 @@
 <script context="module">
-  export function preload(page) {
-    return this.fetch(
-      "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups.json"
-    )
-      .then((res) => {
-        if (!res.ok) {
-          error = {
-            message: "Fetching meetups failed, please try again later!",
-          };
-        }
-        return res.json();
-      })
-      .then((data) => {
-        const fetchedMeetups = [];
-        for (const key in data) {
-          fetchedMeetups.push({
-            ...data[key],
-            id: key,
-          });
-        }
-        return { fetchedMeetups: fetchedMeetups.reverse() };
-      })
-      .catch((err) => {
-        error = err;
-        isLoading = false;
-        this.error(500, "Could not fetch meetups!");
-      });
-  }
+  export const load = async ({ page, fetch, session, stuff }) => {
+    try {
+      const res = await fetch(
+        "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups.json"
+      );
+      if (!res.ok) {
+        return {
+          error: new Error("Fetching meetups failed, please try again later!"),
+        };
+      }
+      const data = await res.json();
+      const fetchedMeetups = [];
+      for (const key in data) {
+        fetchedMeetups.push({
+          ...data[key],
+          id: key,
+        });
+      }
+      return { props: { fetchedMeetups: fetchedMeetups.reverse() } };
+    } catch (err) {
+      isLoading = false;
+      return {
+        error: new Error("Could not fetch meetups!"),
+      };
+    }
+  };
 </script>
 
 <script>
@@ -42,7 +40,7 @@
   import Error from "../components/UI/Error.svelte";
 
   export let fetchedMeetups;
-  
+
   let editMode;
   let editedId;
   let isLoading;

@@ -4,7 +4,7 @@
   import TextInput from "../UI/TextInput.svelte";
   import Button from "../UI/Button.svelte";
   import Modal from "../UI/Modal.svelte";
-  import { isEmpty, isValidEmail } from "../../Helpers/validation";
+  import { isEmpty, isValidEmail } from "../../helpers/validation";
 
   export let id = null;
 

@@ -1,33 +1,32 @@
 <script context="module">
-  export function preload(page) {
+  export const load = async ({ page, fetch, session, stuff }) => {
     const meetupId = page.params.meetup;
 
-    return this.fetch(
-      "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" +
-        meetupId +
-        ".json"
-    )
-      .then((res) => {
-        if (!res.ok) {
-          error = {
-            message: "Fetching meetup failed, please try again later!",
-          };
-        }
-        return res.json();
-      })
-      .then((data) => {
-        return { loadedMeetup: { ...data, id: meetupId } };
-      })
-      .catch((err) => {
-        this.error(404, "Could not fetch meetup!");
-      });
-  }
+    try {
+      const res = await fetch(
+        "https://svelte-meet-up-project-default-rtdb.firebaseio.com/meetups/" +
+          meetupId +
+          ".json"
+      );
+      if (!res.ok) {
+        error = {
+          message: "Fetching meetup failed, please try again later!",
+        };
+      }
+      const data = await res.json();
+      return { props: { loadedMeetup: { ...data, id: meetupId } } };
+    } catch (err) {
+      return {
+        error: new Error("Could not fetch meetups!"),
+      };
+    }
+  };
 </script>
 
 <script>
   import Button from "../components/UI/Button.svelte";
 
-  export let loadedMeetup;
+  export let loadedMeetup = {};
 </script>
 
 <section>
