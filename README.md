@@ -19,26 +19,20 @@ Credit: https://github.com/mschwarzmueller and https://www.udemy.com/course/svel
 
 ## Available Scripts
 
-Install the dependencies...
-
-```
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
+After installed the dependencies with `npm install` (or `pnpm install` or `yarn`), start the application:
 
 ```
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+## Building
 
-## Building and running in production mode
-
-To create an optimised version of the app:
+To create a production version of your app:
 
 ```
 npm run build
 ```
 
-You can run the newly built app with `npm run start`.
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
