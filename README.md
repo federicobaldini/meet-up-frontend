@@ -25,6 +25,8 @@ After installed the dependencies with `npm install` (or `pnpm install` or `yarn`
 npm run dev
 ```
 
+Navigate to localhost:5173. You should see your app running. Edit a component file in src, save it, and reload the page to see your changes.
+
 ## Building
 
 To create a production version of your app:
