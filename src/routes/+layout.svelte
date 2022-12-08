@@ -1,5 +1,9 @@
 <script>
   import Header from "../components/UI/Header.svelte";
+
+  export const csr = false;
+  export const prerender = true;
+  export const trailingSlash = 'always'
 </script>
 
 <Header />

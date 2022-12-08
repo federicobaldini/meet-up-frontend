@@ -39,7 +39,7 @@
   import LoadingSpinner from "../components/UI/LoadingSpinner.svelte";
   import Error from "../components/UI/Error.svelte";
 
-  export let fetchedMeetups;
+  export let fetchedMeetups = [];
 
   let editMode;
   let editedId;
