@@ -1,11 +1,19 @@
-# meetup-frontend
+# meet-up-frontend
 
 A web application to create meetings and events. Frontend realized using Svelte and backend using Firebase. The Firebase service has been shouted down.
 
 Credit: https://github.com/mschwarzmueller and https://www.udemy.com/course/sveltejs-the-complete-guide
 
 <p align="center">
-  <img src="https://github.com/federicobaldini/contact-list/blob/master/application.png" alt="application" />
+  <img src="https://github.com/federicobaldini/meet-up-frontend/blob/master/home.png" alt="application" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/federicobaldini/meet-up-frontend/blob/master/add-modal.png" alt="application" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/federicobaldini/meet-up-frontend/blob/master/error-modal.png" alt="application" />
 </p>
 
 
