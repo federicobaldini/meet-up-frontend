@@ -19,13 +19,19 @@ Credit: https://github.com/mschwarzmueller and https://www.udemy.com/course/svel
 
 ## Available Scripts
 
-After installed the dependencies with `npm install` (or `pnpm install` or `yarn`), start the application:
+Install the dependencies:
+
+```
+npm install
+```
+
+then start the development server:
 
 ```
 npm run dev
 ```
 
-Navigate to localhost:5173. You should see your app running. Edit a component file in src, save it, and reload the page to see your changes.
+Navigate to [localhost:5173](http://localhost:5173). You should see your app running. Edit a component file in src, save it, and reload the page to see your changes.
 
 ## Building
 
