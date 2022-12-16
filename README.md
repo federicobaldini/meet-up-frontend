@@ -16,7 +16,6 @@ Credit: https://github.com/mschwarzmueller and https://www.udemy.com/course/svel
   <img src="https://github.com/federicobaldini/meet-up-frontend/blob/master/error-modal.png" alt="application" />
 </p>
 
-
 ## Available Scripts
 
 Install the dependencies:
